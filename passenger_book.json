@@ -1,0 +1,13 @@
+{
+    "train_cabin_class": "FC",
+    "passengers": [
+        {
+            "name": "shri",
+            "gender": "M"
+        },
+        {
+            "name": "shri",
+            "gender": "M"
+        }
+    ]
+}
