@@ -3,6 +3,9 @@
     - trains are already created
     - for each train there is train cabin (SC1, SC2, FC1, FC2) based on the cabin class
     - train cabin belongs to any of the class (FC, SC)
+* go to train_reservation app
+* install the libraries req.txt
+* pip install req.txt
 * Run `python3 manage.py runserver`
 Below are the endpoints
 ```
