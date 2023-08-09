@@ -5,6 +5,7 @@ from rest_framework.exceptions import APIException
 # Create your views here.
 
 from rest_framework.views import APIView
+from rest_framework.viewsets import ModelViewSet
 from rest_framework.response import Response
 from rest_framework import status
 from .serializers.seriliazers import *
@@ -19,6 +20,7 @@ from .models import (
     trip_seats,
     trips,
 )
+from .paginations import StandardResultsLimitOffsetPagination
 
 
 # class BookingPassengerViewSet(APIView):
@@ -77,11 +79,16 @@ class TrainViewSet(APIView):
         return Response({"data": ser.data}, status=200)
 
 
-class TripSeatsViewSet(APIView):
-    def get(self, request):
-        obj = trip_seats.TripSeats.objects.all()
-        ser = TripSeatsSerializer(obj, many=True)
-        return Response({"data": ser.data}, status=200)
+class TripSeatsModelViewSet(ModelViewSet):
+
+    pagination_class = StandardResultsLimitOffsetPagination
+    queryset = trip_seats.TripSeats.objects.all()
+    serializer_class = TripSeatsSerializer
+
+    # def get(self, request):
+    #     obj = trip_seats.TripSeats.objects.all()
+    #     ser = TripSeatsSerializer(obj, many=True)
+    #     return Response({"data": ser.data}, status=200)
 
 
 class TripViewSet(APIView):

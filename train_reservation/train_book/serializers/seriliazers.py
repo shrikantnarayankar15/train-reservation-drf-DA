@@ -9,7 +9,10 @@ from ..models import (
     trip_seats,
     trips,
 )
-
+class TripSerializer(ModelSerializer):
+    class Meta:
+        model = trips.Trip
+        fields = "__all__"
 
 class BookingSerializer(ModelSerializer):
     class Meta:
@@ -31,7 +34,7 @@ class PassengerSerializer(ModelSerializer):
 
 class BookingPassengerSerializer(ModelSerializer):
     passengers = PassengerSerializer(many=True)
-
+    trip = TripSerializer()
     class Meta:
         model = bookings.Booking
         fields = "__all__"
@@ -72,7 +75,4 @@ class TripSeatsSerializer(ModelSerializer):
         fields = "__all__"
 
 
-class TripSerializer(ModelSerializer):
-    class Meta:
-        model = trips.Trip
-        fields = "__all__"
+
